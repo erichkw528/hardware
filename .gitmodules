@@ -7,3 +7,6 @@
 [submodule "src/arduino_radiolink"]
 	path = src/arduino_radiolink
 	url = https://github.com/wuxiaohua1011/arduino_radiolink
+[submodule "src/central_arduino"]
+	path = src/central_arduino
+	url = https://github.com/wuxiaohua1011/central_arduino.git
