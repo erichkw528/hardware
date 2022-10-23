@@ -10,3 +10,12 @@
 [submodule "src/central_arduino"]
 	path = src/central_arduino
 	url = https://github.com/wuxiaohua1011/central_arduino.git
+[submodule "src/point_one_gps_driver"]
+	path = src/point_one_gps_driver
+	url = https://github.com/wuxiaohua1011/point_one_gps_driver
+[submodule "src/fusion-engine-client"]
+	path = src/fusion-engine-client
+	url = https://github.com/PointOneNav/fusion-engine-client.git
+[submodule "src/arduino_comm"]
+	path = src/arduino_comm
+	url = https://github.com/wuxiaohua1011/arduino_comm
