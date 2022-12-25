@@ -10,3 +10,6 @@
 [submodule "src/arduino_comm"]
 	path = src/arduino_comm
 	url = git@github.com:wuxiaohua1011/arduino_comm.git
+[submodule "src/septentrio_gnss_driver"]
+	path = src/septentrio_gnss_driver
+	url = git@github.com:septentrio-gnss/septentrio_gnss_driver.git
