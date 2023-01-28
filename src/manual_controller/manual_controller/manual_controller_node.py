@@ -8,8 +8,7 @@ from cv_bridge import CvBridge
 from typing import Optional
 import cv2
 from pygame import *
-from ackermann_msgs.msg import AckermannDriveStamped
-
+from roar_msgs.msg import EgoVehicleControl
 from pydantic import BaseModel, validator
 import time
 
@@ -19,8 +18,9 @@ MAX_ANGLE = 1
 
 
 class State(BaseModel):
-    speed: float = 0.0  # speed < 0 = brake
+    throttle: float = 0.0  # speed < 0 = brake
     steering_angle: float = 0.0
+    brake: float = 0.0
     reverse: bool = False
 
     @validator("speed")
@@ -51,9 +51,7 @@ class ManualControllerNode(Node):
             self.on_image_recv,
             10,
         )
-        self.publisher = self.create_publisher(
-            AckermannDriveStamped, "/manual_control", 10
-        )
+        self.publisher = self.create_publisher(EgoVehicleControl, "/manual_control", 10)
         self.bridge = CvBridge()
         self.image: Optional[np.ndarray] = None
 
@@ -86,14 +84,16 @@ class ManualControllerNode(Node):
             pygame.display.flip()
 
         self.parse_event()
-        msg: AckermannDriveStamped = self.p_state_to_ackermann(self.state)
+        msg: EgoVehicleControl = self.p_state_to_control(self.state)
         self.publisher.publish(msg)
 
-    def p_state_to_ackermann(self, state: State) -> AckermannDriveStamped:
-        msg: AckermannDriveStamped = AckermannDriveStamped()
-        msg.header.stamp = self.get_clock().now().to_msg()
-        msg.drive.speed = float(state.speed)
-        msg.drive.steering_angle = float(state.steering_angle)
+    def p_state_to_control(self, state: State) -> EgoVehicleControl:
+        msg: EgoVehicleControl = EgoVehicleControl()
+        msg.throttle = float(state.throttle)
+        msg.steer = float(state.steering_angle)
+        msg.brake = float(state.brake)
+        msg.reverse = False
+
         return msg
 
     def parse_event(self):
@@ -125,11 +125,12 @@ class ManualControllerNode(Node):
                         MIN_ANGLE, self.state.steering_angle - angle_inc
                     )
 
+                # TODO: parse key for brake and reverse
+
     def destroy_node(self) -> bool:
-        msg: AckermannDriveStamped = AckermannDriveStamped()
-        msg.header.stamp = self.get_clock().now().to_msg()
-        msg.drive.speed = float(0)
-        msg.drive.steering_angle = float(0)
+        msg: EgoVehicleControl = EgoVehicleControl()
+        msg.throttle = float(0)
+        msg.steer = float(0)
         num_try = 3
         for i in range(num_try):
             self.publisher.publish(msg)
