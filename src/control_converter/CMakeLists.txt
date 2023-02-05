@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(pid_control_converter)
+project(control_converter)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
@@ -11,7 +11,10 @@ find_package(nav2_core REQUIRED)
 find_package(nav2_common REQUIRED)
 find_package(roar_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
-
+find_package(ackermann_msgs REQUIRED)
+include_directories(
+  include
+)
 set(dependencies
   rclcpp
   rclcpp_action
@@ -21,18 +24,19 @@ set(dependencies
   nav2_core
   roar_msgs
   control_msgs
+  ackermann_msgs
 )
 
-add_executable(pid_control_converter_node src/pid_control_converter_node.cpp)
-ament_target_dependencies(pid_control_converter_node
+add_executable(control_converter_node src/control_converter_node.cpp)
+ament_target_dependencies(control_converter_node
   ${dependencies}
 )
 
-target_include_directories(pid_control_converter_node PUBLIC
+target_include_directories(control_converter_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-install(TARGETS pid_control_converter_node
+install(TARGETS control_converter_node
   DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})

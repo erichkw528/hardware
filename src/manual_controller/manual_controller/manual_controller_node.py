@@ -51,7 +51,9 @@ class ManualControllerNode(Node):
             self.on_image_recv,
             10,
         )
-        self.publisher = self.create_publisher(EgoVehicleControl, "/manual_control", 10)
+        self.publisher = self.create_publisher(
+            EgoVehicleControl, "/arduino/ego_vehicle_control", 10
+        )
         self.bridge = CvBridge()
         self.image: Optional[np.ndarray] = None
 
