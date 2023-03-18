@@ -12,7 +12,7 @@ from roar_msgs.msg import EgoVehicleControl
 from pydantic import BaseModel, validator
 import time
 
-MAX_SPEED = 1
+MAX_THROTTLE = 1
 MIN_ANGLE = -1
 MAX_ANGLE = 1
 
@@ -23,9 +23,9 @@ class State(BaseModel):
     brake: float = 0.0
     reverse: bool = False
 
-    @validator("speed")
+    @validator("throttle")
     def check_throttle(cls, v):
-        assert v <= MAX_SPEED, f"throttle value {v} incorrect."
+        assert v <= MAX_THROTTLE, f"throttle value {v} incorrect."
 
     @validator("steering_angle")
     def check_steering(cls, v):
@@ -111,7 +111,7 @@ class ManualControllerNode(Node):
                     self.state.reverse = not self.state.reverse
 
                 if event.key == K_w or event.key == K_UP:
-                    self.state.speed = min(self.state.speed + speed_inc, MAX_SPEED)
+                    self.state.speed = min(self.state.speed + speed_inc, MAX_THROTTLE)
                 if event.key == K_s or event.key == K_DOWN:
                     self.state.speed = max(0, self.state.speed - speed_inc)
 
