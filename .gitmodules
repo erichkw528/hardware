@@ -10,3 +10,9 @@
 [submodule "src/zed-ros2-wrapper"]
 	path = src/zed-ros2-wrapper
 	url = git@gitlab.com:roar-gokart/zed-ros2-wrapper.git
+[submodule "src/point_one_gps_driver"]
+	path = src/point_one_gps_driver
+	url = https://gitlab.com/roar-gokart/point_one_gps_driver
+[submodule "src/fusion-engine-client"]
+	path = src/fusion-engine-client
+	url = git@github.com:PointOneNav/fusion-engine-client.git
