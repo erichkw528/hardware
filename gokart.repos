@@ -35,3 +35,7 @@ repositories:
     type: git
     url: git@gitlab.com:roar-gokart/roar_gokart_msgs.git
     version: develop
+  gokart-urdf:
+    type: git
+    url: git@gitlab.com:roar-gokart/gokart-urdf.git
+    version: develop
