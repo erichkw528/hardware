@@ -6,6 +6,13 @@
 
 # roar-indy-hardware
 
+
+## Quick start
+For Gokart
+`vcs import src < simulator.repos` 
+
+Make sure to install relevant hardware libraries!
+
 Launch files for everything related to hardware -- Livox, cameras, etc. 
 
 1. install livox driver by following the readme in the livox directory
