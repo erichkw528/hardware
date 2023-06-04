@@ -9,7 +9,7 @@
 
 ## Quick start
 For Gokart
-`vcs import src < simulator.repos` 
+`vcs import src < gokart.repos` 
 
 Make sure to install relevant hardware libraries!
 
