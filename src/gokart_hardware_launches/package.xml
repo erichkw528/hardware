@@ -8,6 +8,11 @@
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>livox_ros2_driver</build_depend>
+  <build_depend>zed_wrapper</build_depend>
+  <build_depend>point_one_gps_driver</build_depend>
+  <build_depend>arduino_comm</build_depend>
+  <build_depend>roar-gokart-urdf</build_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
