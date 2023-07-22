@@ -23,10 +23,6 @@ repositories:
     type: git
     url: git@github.com:PointOneNav/fusion-engine-client.git
     version: master
-  control_converter:
-    type: git
-    url: git@gitlab.com:roar-gokart/control_converter.git
-    version: develop
   gokart_manual_controller:
     type: git
     url: git@gitlab.com:roar-gokart/gokart_manual_controller.git
