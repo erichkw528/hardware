@@ -62,17 +62,6 @@ def generate_launch_description():
     """
     Localization System
     """
-    # vehicle description launch
-    urdf_file_path: Path = (
-        Path(get_package_share_directory("roar-gokart-urdf"))
-        / "launch"
-        / "state_publisher.launch.py"
-    )
-    assert urdf_file_path.exists(), f"[{urdf_file_path}] does not exist"
-    vehicle_urdf_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(urdf_file_path.as_posix())
-    )
-
     # GPS 
     gps_launch_path: Path = Path(get_package_share_directory('point_one_gps_driver')) / 'launch' / 'point_one_gps_driver.launch.py'
     assert gps_launch_path.exists(), f"[{gps_launch_path}] does not exist"

@@ -12,7 +12,6 @@
   <build_depend>zed_wrapper</build_depend>
   <build_depend>point_one_gps_driver</build_depend>
   <build_depend>arduino_comm</build_depend>
-  <build_depend>roar-gokart-urdf</build_depend>
   <build_depend>roar_gokart_msgs</build_depend>
   <build_depend>roar_msgs</build_depend>
 
