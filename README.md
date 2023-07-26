@@ -9,7 +9,7 @@
 
 ## Quick start
 For Gokart
-`vcs import src < gokart.repos` 
+`vcs import src < gokart.repos --recursive` 
 
 Make sure to install relevant hardware libraries!
 
